@@ -27,6 +27,8 @@ public sealed class PartyController(DatabaseContext context) : Controller
         if (party is null)
             return NotFound();
 
+        user = await context.Users.FirstOrDefaultAsync(u => u.Email == user.Email) ?? user;
+
         party.Users.Add(user);
         await context.SaveChangesAsync();
 
