@@ -39,6 +39,6 @@
 
 ## 关于复习(2025)
 
-有关该项目的结构解析与相关考点已经整理至 [此处](https://github.com/Jagdender/NJUPT-AspNetCore-Exp2/blob/master/instructions/main.md) 。
+有关该项目的结构解析与相关考点已经整理至 [此处](instructions/main.md) 。
 
 请配合本项目源码使用。
