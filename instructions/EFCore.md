@@ -147,7 +147,7 @@ public class PartyController(DatabaseContext context) : Controller
 }
 ```
 
-你可以使用不限于一下形式的形式来操作数据库  
+你可以使用不限于以下形式的方法来操作数据库  
 具体有关LINQ的用法请参考[微软官方文档](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/linq/)
 
 - 列出所有
@@ -183,11 +183,8 @@ public class PartyController(DatabaseContext context) : Controller
     ``` csharp
     public async Task<IActionResult> Create(Party party)
     {
-        if (ModelState.IsValid)
-        {
-            await context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(party);
+        await context.Parties.AddAsync(party);
+        await context.SaveChangesAsync(); // 不要遗漏
+        return RedirectToAction(nameof(Index));
     }
     ```
