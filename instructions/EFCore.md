@@ -128,14 +128,34 @@ public sealed class Party
 
 在你需要的地方，使用依赖注入，即构造函数注入上面自定义的`DatabaseContext`类
 
+``` csharp
+public class PartyController : Controller
+{
+    private readonly DatabaseContext context;
+    public PartyController(DatabaseContext context)
+    {
+        this.context = context;
+    }
+    // ...
+}
+```
+或者
+``` csharp
+public class PartyController(DatabaseContext context) : Controller
+{
+    // ...
+}
+```
+
+你可以使用不限于一下形式的形式来操作数据库  
+具体有关LINQ的用法请参考[微软官方文档](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/linq/)
+
 - 列出所有
     ``` csharp
-    public sealed class PartyController(DatabaseContext context) : Controller
+    public async Task<IActionResult> Index()
     {
-        public async Task<IActionResult> Index()
-        {
-            return View(parties);
-        }
+        var parties = await context.Parties.ToListAsync();
+        return View(parties);
     }
     ```
 - 查找
