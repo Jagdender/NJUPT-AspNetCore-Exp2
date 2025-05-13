@@ -17,7 +17,6 @@ app.UseRouting();
 
 app.MapStaticAssets();
 
-app.MapControllerRoute(name: "default", pattern: "{controller=Party}/{action=Index}/{id?}")
-    .WithStaticAssets();
+app.MapControllerRoute(name: "default", pattern: "{controller=Party}/{action=Index}/{id?}");
 
 app.Run();
